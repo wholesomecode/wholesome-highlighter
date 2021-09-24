@@ -13,13 +13,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_rich_text__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/rich-text */ "@wordpress/rich-text");
-/* harmony import */ var _wordpress_rich_text__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_4__);
-
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_rich_text__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/rich-text */ "@wordpress/rich-text");
+/* harmony import */ var _wordpress_rich_text__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -35,27 +32,58 @@ const HighlighterButton = props => {
   const {
     activeFormats
   } = value;
+  const highlighterIcon = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    viewBox: "0 0 20 20",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "m13.791 3.3624c-0.5017-0.48777-1.3098-0.48245-1.8049 0.01187l-3.9568 3.9507c-0.05791 0.05782-0.10897 0.11977-0.15319 0.18488l-1.9918 1.9887 4.6464 4.517 5.7335-5.7566 0.3683-0.36775c0.4951-0.49433 0.4897-1.2905-0.0121-1.7782l-2.8294-2.7506z"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "m5.2528 10.124 4.598 4.4799-1.1632 1.1589c-0.42886 0.4272-1.0916 0.4881-1.5872 0.1804l-0.67343-0.2397-0.94446 0.9259-2.2904-2.2678 0.95586-0.937-0.2139-0.5611c-0.32888-0.4861-0.27782-1.1489 0.15549-1.5806l1.1632-1.1589z"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "m3.2846 15.389 1.1836 1.1382-0.4962 0.4731-1.972-0.476 1.2846-1.1353z"
+  }));
   const [showPopover, setShowPopover] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-  const [activeColor, setActiveColor] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('#ffffff');
+  const colors = [{
+    name: 'yellow',
+    color: '#FFF300'
+  }, {
+    name: 'green',
+    color: '#79FE0C'
+  }, {
+    name: 'blue',
+    color: '#4AF1F2'
+  }, {
+    name: 'purple',
+    color: '#DF00FF'
+  }, {
+    name: 'red',
+    color: '#FF2226'
+  }, {
+    name: 'orange',
+    color: '#FF7B19'
+  }, {
+    name: 'pink',
+    color: '#FF70C5'
+  }];
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichTextToolbarButton, {
-    icon: "edit",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Highlight', 'wholesome-highlighter'),
+    icon: highlighterIcon,
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Highlight', 'wholesome-highlighter'),
     onClick: () => {
-      let showPopover = false;
+      let showPopover = true;
 
       if (activeFormats) {
+        // If the selection already has the format, remove it.
         const formats = activeFormats.filter(format => 'wholesome/highlighter' === format['type']);
 
         if (formats.length > 0) {
-          onChange((0,_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_4__.toggleFormat)(value, {
+          onChange((0,_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_3__.toggleFormat)(value, {
             type: 'wholesome/highlighter'
-          }));
-        } else {
-          showPopover = true;
+          })); // Remove format.
+
+          showPopover = false;
         }
-      } else {
-        showPopover = true;
-      }
+      } // Otherwise show the popover.
+
 
       if (showPopover) {
         setShowPopover(true);
@@ -63,25 +91,27 @@ const HighlighterButton = props => {
     },
     isActive: isActive
   }), showPopover && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.URLPopover, {
+    className: "components-popover components-inline-color-popover components-animate__appear is-from-top is-from-center is-without-arrow",
     onClose: () => setShowPopover(false)
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
-    value: activeColor,
+    colors: colors,
     onChange: color => {
-      console.log;
-      setActiveColor(color);
       setShowPopover(false);
-      onChange((0,_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_4__.toggleFormat)(value, {
-        type: 'wholesome/highlighter',
-        attributes: {
-          style: `background: ${color};`
-        }
-      }));
+
+      if (color) {
+        onChange((0,_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_3__.toggleFormat)(value, {
+          type: 'wholesome/highlighter',
+          attributes: {
+            style: `background: ${color};`
+          }
+        }));
+      }
     }
   })));
 };
 
-(0,_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_4__.registerFormatType)('wholesome/highlighter', {
-  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Highlight', 'wholesome-highlighter'),
+(0,_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_3__.registerFormatType)('wholesome/highlighter', {
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Highlight', 'wholesome-highlighter'),
   tagName: 'mark',
   className: 'wholesome-highlight',
   edit: HighlighterButton
@@ -96,16 +126,6 @@ const HighlighterButton = props => {
 /***/ (function(module) {
 
 module.exports = window["wp"]["blockEditor"];
-
-/***/ }),
-
-/***/ "@wordpress/components":
-/*!************************************!*\
-  !*** external ["wp","components"] ***!
-  \************************************/
-/***/ (function(module) {
-
-module.exports = window["wp"]["components"];
 
 /***/ }),
 

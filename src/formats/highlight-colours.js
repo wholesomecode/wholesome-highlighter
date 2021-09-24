@@ -1,35 +1,45 @@
-import { ColorPalette, RichTextToolbarButton, URLInput, URLPopover } from '@wordpress/block-editor';
-import { IconButton } from '@wordpress/components';
+import { ColorPalette, RichTextToolbarButton, URLPopover } from '@wordpress/block-editor';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { registerFormatType, toggleFormat } from '@wordpress/rich-text';
+import { registerFormatType, removeFormat, toggleFormat } from '@wordpress/rich-text';
 
 const HighlighterButton = ( props ) => {
     const { isActive, onChange, value } = props;
     const { activeFormats } = value;
+    const highlighterIcon = <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="m13.791 3.3624c-0.5017-0.48777-1.3098-0.48245-1.8049 0.01187l-3.9568 3.9507c-0.05791 0.05782-0.10897 0.11977-0.15319 0.18488l-1.9918 1.9887 4.6464 4.517 5.7335-5.7566 0.3683-0.36775c0.4951-0.49433 0.4897-1.2905-0.0121-1.7782l-2.8294-2.7506z"/>
+        <path d="m5.2528 10.124 4.598 4.4799-1.1632 1.1589c-0.42886 0.4272-1.0916 0.4881-1.5872 0.1804l-0.67343-0.2397-0.94446 0.9259-2.2904-2.2678 0.95586-0.937-0.2139-0.5611c-0.32888-0.4861-0.27782-1.1489 0.15549-1.5806l1.1632-1.1589z"/>
+        <path d="m3.2846 15.389 1.1836 1.1382-0.4962 0.4731-1.972-0.476 1.2846-1.1353z"/>
+    </svg>;
+    
     const [ showPopover, setShowPopover ] = useState( false );
-    const [ activeColor, setActiveColor ] = useState( '#ffffff' );
+
+    const colors = [
+        { name: 'yellow', color: '#FFF300' },
+        { name: 'green', color: '#79FE0C' },
+        { name: 'blue', color: '#4AF1F2' },
+        { name: 'purple', color: '#DF00FF' },
+        { name: 'red', color: '#FF2226' },
+        { name: 'orange', color: '#FF7B19' },
+        { name: 'pink', color: '#FF70C5' },
+    ];
+
     return (
         <>
         <RichTextToolbarButton
-            icon='edit'
+            icon={highlighterIcon}
             title={ __( 'Highlight', 'wholesome-highlighter' ) }
             onClick={ () => { 
-                let showPopover = false;
+                let showPopover = true;
                 if ( activeFormats ) {
+                    // If the selection already has the format, remove it.
                     const formats = activeFormats.filter( format => 'wholesome/highlighter' === format['type'] );
                     if ( formats.length > 0 ) {
-                        onChange( 
-                            toggleFormat( value, {
-                                type: 'wholesome/highlighter',
-                            } 
-                        ));
-                    } else {
-                        showPopover = true;
+                        onChange( toggleFormat( value, { type: 'wholesome/highlighter' } ) ); // Remove format.
+                        showPopover = false;
                     }
-                } else {
-                    showPopover = true;
                 }
+                // Otherwise show the popover.
                 if ( showPopover ) {
                     setShowPopover( true );
                 }
@@ -38,20 +48,21 @@ const HighlighterButton = ( props ) => {
         />
         { showPopover && (
             <URLPopover
+                className="components-popover components-inline-color-popover components-animate__appear is-from-top is-from-center is-without-arrow"
                 onClose={ () => setShowPopover( false ) }
             >
                 <ColorPalette
-                    value={ activeColor } 
+                    colors={ colors }
                     onChange={ ( color ) => {
-                        console.log;
-                        setActiveColor( color );
                         setShowPopover( false );
-                        onChange( 
-                            toggleFormat( value, {
-                                type: 'wholesome/highlighter',
-                                attributes: { style: `background: ${color};` },
-                            } 
-                        ));
+                        if ( color ) {
+                            onChange( 
+                                toggleFormat( value, {
+                                    type: 'wholesome/highlighter',
+                                    attributes: { style: `background: ${color};` },
+                                } 
+                            ));
+                        }
                     } }
                 />
             </URLPopover>
