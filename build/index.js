@@ -37,13 +37,18 @@ const cssClass = 'wholesome-highlight'; // Create Highlighter Button with Colour
 
 const HighlighterButton = props => {
   const {
+    contentRef,
     isActive,
     onChange,
     value
   } = props;
   const {
     activeFormats
-  } = value; // Custom Icon SVG.
+  } = value;
+  const anchorRef = (0,_wordpress_rich_text__WEBPACK_IMPORTED_MODULE_3__.useAnchorRef)({
+    ref: contentRef,
+    value
+  }); // Custom Icon SVG.
 
   const highlighterIcon = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     viewBox: "0 0 20 20",
@@ -59,25 +64,25 @@ const HighlighterButton = props => {
   const [showPopover, setShowPopover] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false); // Custom highlighter colours.
 
   const colors = [{
-    name: 'yellow',
+    name: 'Yellow',
     color: '#fff300'
   }, {
-    name: 'green',
+    name: 'Green',
     color: '#79fe0c'
   }, {
-    name: 'blue',
+    name: 'Blue',
     color: '#4af1f2'
   }, {
-    name: 'purple',
+    name: 'Purple',
     color: '#df00ff'
   }, {
-    name: 'red',
+    name: 'Red',
     color: '#ff2226'
   }, {
-    name: 'orange',
+    name: 'Orange',
     color: '#ff7b19'
   }, {
-    name: 'pink',
+    name: 'Pink',
     color: '#ff70c5'
   }];
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichTextToolbarButton, {
@@ -106,7 +111,8 @@ const HighlighterButton = props => {
     },
     isActive: isActive
   }), showPopover && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.URLPopover, {
-    className: "components-popover components-inline-color-popover components-animate__appear is-from-top is-from-center is-without-arrow",
+    anchorRef: anchorRef,
+    className: "components-inline-color-popover",
     onClose: () => setShowPopover(false)
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
     colors: colors,
@@ -118,7 +124,7 @@ const HighlighterButton = props => {
         const attributes = {};
 
         if (selectedColor.length) {
-          attributes.class = `${cssClass}--${selectedColor[0].name}`;
+          attributes.class = `${cssClass}--${selectedColor[0].name.toLowerCase()}`;
         } else {
           attributes.style = `background-color: ${color};`;
         }

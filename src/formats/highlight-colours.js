@@ -8,7 +8,7 @@
 import { ColorPalette, RichTextToolbarButton, URLPopover } from '@wordpress/block-editor';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { registerFormatType, toggleFormat } from '@wordpress/rich-text';
+import { registerFormatType, toggleFormat, useAnchorRef } from '@wordpress/rich-text';
 
 // Import Styles.
 import '../style.scss';
@@ -18,8 +18,9 @@ const cssClass = 'wholesome-highlight';
 
 // Create Highlighter Button with Colour Selection Popover.
 const HighlighterButton = ( props ) => {
-    const { isActive, onChange, value } = props;
+    const { contentRef, isActive, onChange, value } = props;
     const { activeFormats } = value;
+    const anchorRef = useAnchorRef( { ref: contentRef, value } );
 
     // Custom Icon SVG.
     const highlighterIcon = <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -33,13 +34,13 @@ const HighlighterButton = ( props ) => {
 
     // Custom highlighter colours.
     const colors = [
-        { name: 'yellow', color: '#fff300' },
-        { name: 'green', color: '#79fe0c' },
-        { name: 'blue', color: '#4af1f2' },
-        { name: 'purple', color: '#df00ff' },
-        { name: 'red', color: '#ff2226' },
-        { name: 'orange', color: '#ff7b19' },
-        { name: 'pink', color: '#ff70c5' },
+        { name: 'Yellow', color: '#fff300' },
+        { name: 'Green', color: '#79fe0c' },
+        { name: 'Blue', color: '#4af1f2' },
+        { name: 'Purple', color: '#df00ff' },
+        { name: 'Red', color: '#ff2226' },
+        { name: 'Orange', color: '#ff7b19' },
+        { name: 'Pink', color: '#ff70c5' },
     ];
 
     return (
@@ -66,7 +67,8 @@ const HighlighterButton = ( props ) => {
         />
         { showPopover && (
             <URLPopover
-                className="components-popover components-inline-color-popover components-animate__appear is-from-top is-from-center is-without-arrow"
+                anchorRef={ anchorRef }
+                className="components-inline-color-popover"
                 onClose={ () => setShowPopover( false ) }
             >
                 <ColorPalette
@@ -77,7 +79,7 @@ const HighlighterButton = ( props ) => {
                             const selectedColor = colors.filter( item => color === item.color );
                             const attributes  = {};
                             if ( selectedColor.length ) {
-                                attributes.class = `${cssClass}--${selectedColor[0].name}`;
+                                attributes.class = `${cssClass}--${selectedColor[0].name.toLowerCase()}`;
                             } else {
                                 attributes.style = `background-color: ${color};`;
                             }
