@@ -1,9 +1,17 @@
+/**
+ * Highlighter Paragraph.
+ * 
+ * Highlighter that is limited to a single block.
+ */
+
+// Import WordPress Components.
 import { RichTextToolbarButton } from '@wordpress/block-editor';
 import { compose, ifCondition  } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { registerFormatType, toggleFormat } from '@wordpress/rich-text';
 
+// Create Highlighter Button.
 const HighlighterButton = ( { isActive, onChange, value} ) => {
     return ( 
         <RichTextToolbarButton
@@ -21,6 +29,7 @@ const HighlighterButton = ( { isActive, onChange, value} ) => {
     )
 };
 
+// Limit the format to the `core/paragraph` block.
 var HighlighterButtonContainer = compose(
 	withSelect( function( select ) {
 		const blocks = select( 'core/block-editor' ).getBlocks()
@@ -36,6 +45,7 @@ var HighlighterButtonContainer = compose(
 	} )
 )( HighlighterButton );
 
+// Register the Format.
 registerFormatType(
 	'wholesome/highlighter', {
         title: __( 'Highlight', 'wholesome-highlighter' ),

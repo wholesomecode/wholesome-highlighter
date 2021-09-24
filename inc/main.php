@@ -16,18 +16,15 @@ function setup() : void {
 	// Load text domain.
 	load_plugin_textdomain( 'wholesome-highlighter', false, ROOT_DIR . '\languages' );
 
-	// Enqueue Block Assets.
+	// Enqueue Block Editor Assets.
 	add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\\enqueue_block_editor_assets', 10 );
 
-	// Styles for the front and backend.
-	// add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_block_assets', 10 );
-
-	// Styles for the backend only.
-	// add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_frontend_assets', 10 );
+	// Enqueue Block Styles for Frontend and Backend.
+	add_action( 'enqueue_block_assets', __NAMESPACE__ . '\\enqueue_block_styles', 10 );
 }
 
 /**
- * Enqueue Admin Assets
+ * Enqueue Block Editor Assets
  *
  * @throws \Error Warn if asset dependencies do not exist.
  *
@@ -44,7 +41,6 @@ function enqueue_block_editor_assets() : void {
 	}
 
 	$scripts = '/build/index.js';
-	$styles  = '/build/index.css';
 	$assets  = include $asset_path;
 
 	wp_enqueue_script(
@@ -55,16 +51,26 @@ function enqueue_block_editor_assets() : void {
 		false
 	);
 
+	wp_set_script_translations(
+		PLUGIN_SLUG . '-block-scripts',
+		'wholesome-highlighter',
+		ROOT_DIR . '\languages'
+	);
+}
+
+/**
+ * Enqueue Block Styles for Frontend and Backend.
+ *
+ * @return void
+ */
+function enqueue_block_styles() : void {
+
+	$styles = '/build/style-index.css';
+
 	wp_enqueue_style(
 		PLUGIN_SLUG . '-block-styles',
 		plugins_url( $styles, ROOT_FILE ),
 		array(),
 		filemtime( ROOT_DIR . $styles )
-	);
-
-	wp_set_script_translations(
-		PLUGIN_SLUG . '-admin-scripts',
-		'wholesome-highlighter',
-		ROOT_DIR . '\languages'
 	);
 }

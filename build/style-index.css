@@ -1,0 +1,34 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/**
+ * Styles.
+ * 
+ * Apply styles for each highlighter colour. This way the common colours
+ * can be overridden. 
+ * 
+ * Custom styles are set via an inline style.
+ */
+.wholesome-highlight.wholesome-highlight--yellow {
+  background-color: #fff300;
+}
+.wholesome-highlight.wholesome-highlight--green {
+  background-color: #79fe0c;
+}
+.wholesome-highlight.wholesome-highlight--blue {
+  background-color: #4af1f2;
+}
+.wholesome-highlight.wholesome-highlight--purple {
+  background-color: #df00ff;
+}
+.wholesome-highlight.wholesome-highlight--red {
+  background-color: #ff2226;
+}
+.wholesome-highlight.wholesome-highlight--orange {
+  background-color: #ff7b19;
+}
+.wholesome-highlight.wholesome-highlight--pink {
+  background-color: #ff70c5;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
