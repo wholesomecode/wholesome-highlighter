@@ -7,7 +7,7 @@
  * Description:       Highlight text with a highlight colour of your choice, using Highlighter.
  * Requires at least: 5.8
  * Requires PHP:      7.0
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Wholesome Code <hello@wholesomecode.ltd>
  * Author URI:        https://wholesomecode.ltd
  * License:           GPL-2.0-or-later
@@ -22,7 +22,7 @@ namespace Wholesome\Highlighter; // @codingStandardsIgnoreLine
 
 const PLUGIN_PREFIX  = 'wholesome_highlighter';
 const PLUGIN_SLUG    = 'wholesome-highlighter';
-const PLUGIN_VERSION = '1.0.0';
+const PLUGIN_VERSION = '1.0.1';
 const ROOT_DIR       = __DIR__;
 const ROOT_FILE      = __FILE__;
 
