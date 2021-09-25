@@ -14,7 +14,7 @@ const HighlighterButton = ( { isActive, onChange, value} ) => {
     return ( 
         <RichTextToolbarButton
             icon='edit'
-            title={ __( 'Highlight', 'wholesome-highlighter' ) }
+            isActive={ isActive }
             onClick={ () => {
                 onChange(
                     toggleFormat( value, {
@@ -22,7 +22,7 @@ const HighlighterButton = ( { isActive, onChange, value} ) => {
                     } )
                 );
             } }
-            isActive={ isActive }
+            title={ __( 'Highlight', 'wholesome-highlighter' ) }
         />
     )
 };
@@ -30,9 +30,9 @@ const HighlighterButton = ( { isActive, onChange, value} ) => {
 // Register the Format.
 registerFormatType(
 	'wholesome/highlighter', {
-        title: __( 'Highlight', 'wholesome-highlighter' ),
-		tagName: 'mark',
-		className: 'wholesome-highlight',
+        className: 'wholesome-highlight',
 		edit: HighlighterButton,
+        tagName: 'mark',
+        title: __( 'Highlight', 'wholesome-highlighter' ),
 	}
 );
