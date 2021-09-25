@@ -94,6 +94,7 @@ const HighlighterButton = ( props ) => {
                     ) }
                 </>
             }
+            key={ isActive ? 'text-color' : 'text-color-not-active' }
             name={ isActive ? 'text-color' : undefined }
             onClick={ () => { 
                 setShowPopover( true );

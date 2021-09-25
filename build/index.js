@@ -189,6 +189,7 @@ const HighlighterButton = props => {
       className: "format-library-text-color-button__indicator",
       style: getActiveColor()
     })),
+    key: isActive ? 'text-color' : 'text-color-not-active',
     name: isActive ? 'text-color' : undefined,
     onClick: () => {
       setShowPopover(true);
