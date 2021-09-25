@@ -20,3 +20,6 @@ To install Network Plugin Manager:
 
 = 1.0.0 =
 * Initial Plugin.
+
+= 1.0.1 =
+* Added active highlight colour icon, and various bug fixes.
