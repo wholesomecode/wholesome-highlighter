@@ -6,8 +6,8 @@
 
 // Import WordPress Components.
 import { RichTextToolbarButton } from '@wordpress/block-editor';
-import { compose, ifCondition  } from '@wordpress/compose';
-import { withSelect } from '@wordpress/data';
+import { ifCondition  } from '@wordpress/compose';
+import { useSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 import { registerFormatType, toggleFormat } from '@wordpress/rich-text';
 
@@ -30,20 +30,13 @@ const HighlighterButton = ( { isActive, onChange, value} ) => {
 };
 
 // Limit the format to the `core/paragraph` block.
-var HighlighterButtonContainer = compose(
-	withSelect( function( select ) {
-		const blocks = select( 'core/block-editor' ).getBlocks()
-		return {
-			selectedBlock: select('core/block-editor').getSelectedBlock(),
-		}
-	} ),
-	ifCondition( function( props ) {
-		return (
-			props.selectedBlock &&
-			props.selectedBlock.name === 'core/paragraph'
-		); 
-	} )
-)( HighlighterButton );
+var HighlighterButtonContainer = ifCondition( ( props ) => {
+	const selectedBlock = useSelect( (select) => select('core/block-editor').getSelectedBlock() );
+	return (
+		selectedBlock &&
+		selectedBlock.name === 'core/paragraph'
+	); 
+} )( HighlighterButton );
 
 // Register the Format.
 registerFormatType(
