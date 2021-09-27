@@ -8,7 +8,7 @@
 import { ColorPalette, RichTextToolbarButton, URLPopover } from '@wordpress/block-editor';
 import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { Icon, textColor as textColorIcon } from '@wordpress/icons';
+import { Icon } from '@wordpress/icons';
 import { applyFormat, registerFormatType, toggleFormat, useAnchorRef } from '@wordpress/rich-text';
 
 // Import Styles.
