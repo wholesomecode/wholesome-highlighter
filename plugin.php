@@ -22,7 +22,7 @@ namespace Wholesome\Highlighter; // @codingStandardsIgnoreLine
 
 const PLUGIN_PREFIX  = 'wholesome_highlighter';
 const PLUGIN_SLUG    = 'wholesome-highlighter';
-const PLUGIN_VERSION = '1.0.1';
+const PLUGIN_VERSION = '1.0.2';
 const ROOT_DIR       = __DIR__;
 const ROOT_FILE      = __FILE__;
 
