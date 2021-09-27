@@ -150,7 +150,8 @@ const HighlighterButton = props => {
 
       if (attributes && attributes.length) {
         atts = attributes;
-      }
+      } // If we have no attributes, use the active colour.
+
 
       if (!atts) {
         if (activeColor) {
@@ -163,6 +164,7 @@ const HighlighterButton = props => {
       }
 
       if (atts.hasOwnProperty('class')) {
+        // If the format has set a colour via the class.
         const parts = atts.class.split('--');
         const colorName = parts[parts.length - 1];
         const selectedColor = colors.filter(item => colorName === item.name.toLowerCase())[0];
@@ -170,6 +172,7 @@ const HighlighterButton = props => {
           backgroundColor: selectedColor.color
         };
       } else if (atts.hasOwnProperty('style')) {
+        // If the format has set a colour via an inline style.
         const {
           style
         } = atts;
@@ -180,7 +183,10 @@ const HighlighterButton = props => {
         };
       }
     }
-  };
+  }; // Note that we set a custom icon that has a highlighter colour overlay.
+  // We use the build in `text-color` name and key to pin the popover 
+  // icon to the toolbar once the colour has been selected. 
+
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichTextToolbarButton, {
     icon: (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -203,15 +209,17 @@ const HighlighterButton = props => {
     colors: colors,
     onChange: color => {
       setShowPopover(false);
-      setActiveColor(color);
+      setActiveColor(color); // Set a colour or apply a class if these are custom colours.
 
       if (color) {
         const selectedColor = colors.filter(item => color === item.color);
         const attributes = {};
 
         if (selectedColor.length) {
+          // Colour exists in custom colours, apply a class.
           attributes.class = `${cssClass}--${selectedColor[0].name.toLowerCase()}`;
         } else {
+          // Colour does not exist, set a background colour.
           attributes.style = `background-color: ${color};`;
         }
 

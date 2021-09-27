@@ -27,8 +27,17 @@ const ROOT_DIR       = __DIR__;
 const ROOT_FILE      = __FILE__;
 
 require_once ROOT_DIR . '/inc/main.php';
+require_once ROOT_DIR . '/inc/class-updater.php';
 
 /**
  * Load Plugin.
  */
 add_action( 'plugins_loaded', __NAMESPACE__ . '\\setup' );
+
+/**
+ * Allow plugin to update from GitHub.
+ */
+$updater = new Updater( ROOT_FILE );
+$updater->set_username( 'wholesomecode' );
+$updater->set_repository( 'wholesome-highlighter' );
+$updater->initialize();

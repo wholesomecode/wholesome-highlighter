@@ -59,6 +59,7 @@ const HighlighterButton = ( props ) => {
                 atts = attributes;
             }
 
+            // If we have no attributes, use the active colour.
             if ( ! atts ) {
                 if ( activeColor ) {
                     return { backgroundColor: activeColor };
@@ -67,11 +68,13 @@ const HighlighterButton = ( props ) => {
             }
 
             if ( atts.hasOwnProperty('class') ) {
+                // If the format has set a colour via the class.
                 const parts = atts.class.split( '--' );
                 const colorName = parts[ parts.length - 1 ];
                 const selectedColor = colors.filter( item => colorName === item.name.toLowerCase() )[0];
                 return { backgroundColor: selectedColor.color };
             } else if ( atts.hasOwnProperty('style') ) {
+                 // If the format has set a colour via an inline style.
                 const { style } = atts;
                 const parts = style.split( ': ' );
                 const selectedColor = parts[ parts.length - 1 ].replace( ';', '' );
@@ -80,6 +83,9 @@ const HighlighterButton = ( props ) => {
         }        
     };
 
+    // Note that we set a custom icon that has a highlighter colour overlay.
+    // We use the build in `text-color` name and key to pin the popover 
+    // icon to the toolbar once the colour has been selected. 
     return (
         <>
         <RichTextToolbarButton
@@ -112,12 +118,15 @@ const HighlighterButton = ( props ) => {
                     onChange={ ( color ) => {
                         setShowPopover( false );
                         setActiveColor( color );
+                        // Set a colour or apply a class if these are custom colours.
                         if ( color ) {
                             const selectedColor = colors.filter( item => color === item.color );
                             const attributes  = {};
                             if ( selectedColor.length ) {
+                                // Colour exists in custom colours, apply a class.
                                 attributes.class = `${cssClass}--${selectedColor[0].name.toLowerCase()}`;
                             } else {
+                                // Colour does not exist, set a background colour.
                                 attributes.style = `background-color: ${color};`;
                             }
                             onChange( 
