@@ -1,0 +1,102 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+/*! ../style.scss */
+
+/*! ./checkPropTypes */
+
+/*! ./cjs/react-is.development.js */
+
+/*! ./factoryWithTypeCheckers */
+
+/*! ./formats/highlight-colours */
+
+/*! ./lib/ReactPropTypesSecret */
+
+/*! @wordpress/block-editor */
+
+/*! @wordpress/element */
+
+/*! @wordpress/i18n */
+
+/*! @wordpress/icons */
+
+/*! @wordpress/rich-text */
+
+/*! object-assign */
+
+/*! prop-types */
+
+/*! react-is */
+
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+
+/*!************************!*\
+  !*** ./src/style.scss ***!
+  \************************/
+
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+
+/*!*********************************!*\
+  !*** external ["wp","element"] ***!
+  \*********************************/
+
+/*!**********************************!*\
+  !*** external ["wp","richText"] ***!
+  \**********************************/
+
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/prop-types/index.js ***!
+  \******************************************/
+
+/*!******************************************!*\
+  !*** ./src/formats/highlight-colours.js ***!
+  \******************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/object-assign/index.js ***!
+  \*********************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/prop-types/checkPropTypes.js ***!
+  \***************************************************/
+
+/*!************************************************************!*\
+  !*** ./node_modules/prop-types/factoryWithTypeCheckers.js ***!
+  \************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
+  \*************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./node_modules/prop-types/node_modules/react-is/index.js ***!
+  \****************************************************************/
+
+/*!******************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/icon/index.js ***!
+  \******************************************************************/
+
+/*!***********************************************************************************!*\
+  !*** ./node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js ***!
+  \***********************************************************************************/
+
+/** @license React v16.13.1
+ * react-is.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */

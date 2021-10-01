@@ -11,6 +11,10 @@
 
 namespace Wholesome\Highlighter; // @codingStandardsIgnoreLine
 
+use const Wholesome\Highlighter\PLUGIN_ADDED;
+use const Wholesome\Highlighter\PLUGIN_REQUIRES;
+use const Wholesome\Highlighter\PLUGIN_TESTED;
+
 /**
  * Updater.
  *
@@ -181,12 +185,12 @@ class Updater {
 				$plugin = array(
 					'name'              => $this->plugin['Name'],
 					'slug'              => $this->basename,
-					'requires'          => '5.8',
-					'tested'            => '5.8.1',
+					'requires'          => PLUGIN_REQUIRES,
+					'tested'            => PLUGIN_TESTED,
 					'rating'            => '0',
 					'num_ratings'       => '0',
 					'downloaded'        => '0',
-					'added'             => '2021-09-27',
+					'added'             => PLUGIN_ADDED,
 					'version'           => $this->github_response['tag_name'],
 					'author'            => $this->plugin['AuthorName'],
 					'author_profile'    => $this->plugin['AuthorURI'],

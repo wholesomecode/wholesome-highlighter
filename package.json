@@ -1,6 +1,6 @@
 {
 	"name": "wholesome-highlighter",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Highlight text with this simple highlighter plugin.",
 	"author": "The WordPress Contributors",
 	"license": "GPL-2.0-or-later",
@@ -19,6 +19,23 @@
 		"@wordpress/i18n": "^4.2.2"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^18.0.1"
+		"@wordpress/scripts": "^18.0.1",
+		"eslint": "^7.0.0",
+		"eslint-config-airbnb": "^18.1.0",
+		"eslint-loader": "^4.0.2",
+		"eslint-plugin-import": "^2.20.2",
+		"friendly-errors-webpack-plugin": "^1.7.0",
+		"ignore-emit-webpack-plugin": "^2.0.2",
+		"mini-css-extract-plugin": "^0.9.0",
+		"node-sass": "^4.13.1",
+		"optimize-css-assets-webpack-plugin": "^5.0.3",
+		"postcss-loader": "^3.0.0",
+		"postcss-preset-env": "^6.7.0",
+		"sass-loader": "^8.0.2",
+		"stylelint": "^13.2.0",
+		"stylelint-config-wordpress": "^17.0.0",
+		"stylelint-order": "^4.0.0",
+		"stylelint-webpack-plugin": "^1.2.3",
+		"terser-webpack-plugin": "^2.3.5"
 	}
 }

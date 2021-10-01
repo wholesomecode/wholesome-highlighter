@@ -1,37 +1,38 @@
 /**
  * Styles.
- * 
+ *
  * Apply styles for each highlighter colour. This way the common colours
- * can be overridden. 
- * 
+ * can be overridden.
+ *
  * Custom styles are set via an inline style.
  */
 .wholesome-highlight {
-    &.wholesome-highlight--yellow {
-        background-color: #fff300;
-    }
 
-    &.wholesome-highlight--green {
-        background-color: #79fe0c;
-    }
+	&.wholesome-highlight--yellow {
+		background-color: #fff300;
+	}
 
-    &.wholesome-highlight--blue {
-        background-color: #4af1f2;
-    }
+	&.wholesome-highlight--green {
+		background-color: #79fe0c;
+	}
 
-    &.wholesome-highlight--purple {
-        background-color: #df00ff;
-    }
+	&.wholesome-highlight--blue {
+		background-color: #4af1f2;
+	}
 
-    &.wholesome-highlight--red {
-        background-color: #ff2226;
-    }
+	&.wholesome-highlight--purple {
+		background-color: #df00ff;
+	}
 
-    &.wholesome-highlight--orange {
-        background-color: #ff7b19;
-    }
+	&.wholesome-highlight--red {
+		background-color: #ff2226;
+	}
 
-    &.wholesome-highlight--pink {
-        background-color: #ff70c5;
-    }
+	&.wholesome-highlight--orange {
+		background-color: #ff7b19;
+	}
+
+	&.wholesome-highlight--pink {
+		background-color: #ff70c5;
+	}
 }
