@@ -25,11 +25,11 @@ Happy exploring.
 
 == Installation ==
 
-To install Network Plugin Manager:
+To install Highlighter:
 
 1. Note that the plugin is only compatible with a WordPress Multisite Installation. 
 2. Upload the plugin files to the `/wp-content/plugins/wholesome-highlighter` directory, or install the plugin through the WordPress network plugins screen directly.
-3. Activate the plugin through the Network Admin \'Plugins\' screen in WordPress
+3. Activate the plugin through the \'Plugins\' screen in WordPress
 
 == Changelog ==
 
