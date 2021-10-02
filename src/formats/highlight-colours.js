@@ -170,6 +170,6 @@ HighlighterButton.propTypes = {
 	contentRef: PropTypes.shape( {} ).isRequired,
 	onChange: PropTypes.func.isRequired,
 	value: PropTypes.shape( {
-		activeFormats: PropTypes.arrayOf( PropTypes.shape( {} ) ).isRequired,
+		activeFormats: PropTypes.arrayOf( PropTypes.shape( {} ) ),
 	} ).isRequired,
 };
