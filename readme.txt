@@ -15,7 +15,7 @@ a standalone plugin for your WordPress website, or as parts for something
 amazing that you are working on.
 
 If you want to make changes to the plugin just `cd` into this directory and 
-run `npm start`. That will compile all of the SCSS and JavaScript files.
+run `npm install && npm start`. That will compile all of the SCSS and JavaScript files.
 
 If you look in `/src/index.js` you will find commented out paths to other versions
 of this plugin. You can find corrosponding tutorials that explore those files further
