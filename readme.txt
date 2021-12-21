@@ -1,8 +1,9 @@
 === Highlighter ===
 Contributors:      wholesomecode
 Tags:              block formats, format, mark, highlight
-Tested up to:      5.8.0
-Stable tag:        1.0.3
+Requires at least: 5.8
+Tested up to:      5.8.2
+Stable tag:        1.1.0
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,9 +28,8 @@ Happy exploring.
 
 To install Highlighter:
 
-1. Note that the plugin is only compatible with a WordPress Multisite Installation. 
-2. Upload the plugin files to the `/wp-content/plugins/wholesome-highlighter` directory, or install the plugin through the WordPress network plugins screen directly.
-3. Activate the plugin through the \'Plugins\' screen in WordPress
+1. Upload the plugin files to the `/wp-content/plugins/wholesome-highlighter` directory, or install the plugin through the WordPress plugins screen directly.
+2. Activate the plugin through the \'Plugins\' screen in WordPress
 
 == Changelog ==
 
@@ -44,3 +44,6 @@ To install Highlighter:
 
 = 1.0.3 = 
 * Added documentation, and general code quality improvements.
+
+= 1.1.0 = 
+* Improved readme and minor improvements.
