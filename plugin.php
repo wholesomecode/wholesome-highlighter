@@ -3,7 +3,7 @@
  * Network Plugin Manager
  *
  * Plugin Name:       Highlighter
- * Plugin URI:        https://wholesomecode.ltd/plugins/wholesome-highlighter
+ * Plugin URI:        https://wholesomecode.ltd/plugins/highlighter
  * Description:       Highlight text with a highlight colour of your choice, using Highlighter.
  * Requires at least: 5.8
  * Requires PHP:      7.0
@@ -41,7 +41,7 @@ const PLUGIN_ADDED    = '2021-09-27';
 const PLUGIN_PREFIX   = 'wholesome_highlighter';
 const PLUGIN_REQUIRES = '5.8';
 const PLUGIN_SLUG     = 'wholesome-highlighter';
-const PLUGIN_TESTED   = '5.8.1';
+const PLUGIN_TESTED   = '5.8.2';
 const PLUGIN_VERSION  = '1.0.3';
 const ROOT_DIR        = __DIR__;
 const ROOT_FILE       = __FILE__;
